@@ -15,11 +15,11 @@ class Financing {
 
     //Methods
     public double monthlyPayment() {
-        return (propertyValue / (financingTerm * 12)) * (1 + (annualInterestRate / 12));
+        return (this.propertyValue / (this.financingTerm * 12)) * (1 + (this.annualInterestRate / 12));
     }
 
     public double totalPayment() {
-        return monthlyPayment() * financingTerm * 12;
+        return monthlyPayment() * this.financingTerm * 12;
     }
 
 }

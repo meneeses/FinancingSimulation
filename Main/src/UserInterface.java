@@ -8,11 +8,11 @@ public class UserInterface {
     static Scanner scan = new Scanner(System.in);
 
     public static void welcomeMessage() {
-        System.out.println("Welcome to the Real Estate Financing System!");
+        System.out.println(" ==== Welcome to the Real Estate Financing System! ==== \n");
     }
 
     public static void goodbyeMessage() {
-        System.out.println("Thank you for using the Real Estate Financing System!");
+        System.out.println("\nThank you for using the Real Estate Financing System!");
     }
 
     public static void requestPropertyValue() {
