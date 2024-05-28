@@ -38,7 +38,7 @@ public class UserInterface {
     public static int requestFinancingTerm() {
         int financingTerm;
         do {
-            System.out.println("\nEnter the financing term (in years): \n");
+            System.out.println("\nEnter the financing term (in years): ");
             try {
                 financingTerm = scan.nextInt();
                 if (financingTerm <= 0) {

@@ -29,11 +29,7 @@ public class Main {
 
         // Creating a new financing object and displaying the monthly and total payment
         Financing financing = new Financing(propertyValue, annualInterestRate, financingTerm);
-        System.out.println("Property Value: " + String.format("%.2f", financing.getPropertyValue()));
-        System.out.println("Annual Interest Rate: " + String.format("%.2f",financing.getAnnualInterestRate()));
-        System.out.println("Financing Term: " + financing.getFinancingTerm());
-        System.out.println("\nMonthly payment: " + String.format("%.2f", financing.monthlyPayment()));
-        System.out.println("Total payment: " + String.format("%.2f", financing.totalPayment()));
+        financing.showAllFinancingData();
         UserInterface.goodbyeMessage();
     }
 

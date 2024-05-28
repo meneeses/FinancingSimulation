@@ -37,9 +37,11 @@ public class Financing {
         return monthlyPayment() * this.financingTerm * 12;
     }
 
-    public String showFinancingData() {
-        return "Property Value: " + this.propertyValue + "\n" +
-                "Total Payment: " + totalPayment();
+    public void showAllFinancingData() {
+        System.out.println("\nProperty Value: R$ " + String.format("%.2f", this.getPropertyValue()));
+        System.out.println("Annual Interest Rate: " + String.format("%.2f", this.getAnnualInterestRate())+"%");
+        System.out.println("Financing Term: " + this.getFinancingTerm() + " years");
+        System.out.println("\nMonthly Payment: R$ " + String.format("%.2f", this.monthlyPayment()));
+        System.out.println("Total Payment: R$ " + String.format("%.2f", this.totalPayment()));
     }
-
 }
