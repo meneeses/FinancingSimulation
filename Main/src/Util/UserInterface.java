@@ -41,8 +41,8 @@ public class UserInterface {
             System.out.println("\nEnter the financing term (in years): ");
             try {
                 financingTerm = scan.nextInt();
-                if (financingTerm <= 0 || financingTerm >= 60) {
-                    System.out.println("\nThe financing term must be greater than zero and less than or equal to 60 years. Please enter a valid value.");
+                if (financingTerm <= 0 || financingTerm >= 35) {
+                    System.out.println("\nThe financing term must be greater than zero and less than or equal to 35 years. Please enter a valid value.");
                 } else {
                     return financingTerm;
                 }
@@ -59,8 +59,8 @@ public class UserInterface {
             System.out.println("\nEnter the annual interest rate: ");
             try {
                 annualInterestRate = scan.nextDouble();
-                if (annualInterestRate <= 0 || annualInterestRate >= 100) {
-                    System.out.println("\nThe annual interest rate must be greater than zero and less than or equal to 100%. Please enter a valid value.");
+                if (annualInterestRate <= 0 || annualInterestRate >= 30) {
+                    System.out.println("\nThe annual interest rate must be greater than zero and less than or equal to 30%. Please enter a valid value.");
                 } else {
                     return annualInterestRate;
                 }
