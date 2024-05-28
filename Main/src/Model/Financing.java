@@ -1,16 +1,31 @@
+package Model;
+
 // ==== Class to calculate the financing of a property ==== //
-class Financing {
+public class Financing {
 
     //Attributes
-    double propertyValue;
-    double annualInterestRate;
-    int financingTerm;
+    private final double propertyValue;
+    private final double annualInterestRate;
+    private final int financingTerm;
 
     //Constructor
     public Financing(double propertyValue, double annualInterestRate, int financingTerm) {
         this.propertyValue = propertyValue;
         this.annualInterestRate = annualInterestRate;
         this.financingTerm = financingTerm;
+    }
+
+    // Getters
+    public double getPropertyValue() {
+        return propertyValue;
+    }
+
+    public double getAnnualInterestRate() {
+        return annualInterestRate;
+    }
+
+    public int getFinancingTerm() {
+        return financingTerm;
     }
 
     //Methods
@@ -20,6 +35,11 @@ class Financing {
 
     public double totalPayment() {
         return monthlyPayment() * this.financingTerm * 12;
+    }
+
+    public String showFinancingData() {
+        return "Property Value: " + this.propertyValue + "\n" +
+                "Total Payment: " + totalPayment();
     }
 
 }
