@@ -10,7 +10,8 @@ public class UserInterface {
 
     // Methods
     public static void welcomeMessage() {
-        System.out.println("\n ==== Welcome to the Real Estate Model.Financing System! ==== ");
+        System.out.println("\n ==== Welcome to the Real Estate Model.Financing System! ==== \n");
+        System.out.println("Please, enter the four (4) properties you want to simulate the financing.");
     }
 
     public static void goodbyeMessage() {
