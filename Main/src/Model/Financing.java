@@ -28,6 +28,10 @@ public class Financing {
         return financingTerm;
     }
 
+    public String getType() {
+        return "Not specified";
+    }
+
     //Methods
     public double monthlyPayment() {
         return (this.propertyValue / (this.financingTerm * 12)) * (1 + (this.annualInterestRate / 12));
@@ -38,7 +42,7 @@ public class Financing {
     }
 
     public void showAllFinancingData() {
-        System.out.println("\nProperty Value: R$ " + String.format("%.2f", this.getPropertyValue()));
+        System.out.println("Property Value: R$ " + String.format("%.2f", this.getPropertyValue()));
         System.out.println("Annual Interest Rate: " + String.format("%.2f", this.getAnnualInterestRate())+"%");
         System.out.println("Financing Term: " + this.getFinancingTerm() + " years");
         System.out.println("\nMonthly Payment: R$ " + String.format("%.2f", this.monthlyPayment()));
