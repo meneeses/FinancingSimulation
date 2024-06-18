@@ -1,7 +1,7 @@
 package Model;
 
 // ==== Class to calculate the financing of a property ==== //
-public class Financing {
+public abstract class Financing {
 
     //Attributes
     private final double propertyValue;
@@ -28,14 +28,18 @@ public class Financing {
         return financingTerm;
     }
 
-    public String getType() {
-        return "Not specified";
-    }
 
-    //Methods
-    public double monthlyPayment() {
-        return (this.propertyValue / (this.financingTerm * 12)) * (1 + (this.annualInterestRate / 12));
-    }
+    // ==== METHODS =====
+
+    //Abstract Method to get the type of the property
+    public abstract String getType();
+
+    //Abstract Method to calculate the monthly payment
+    public abstract double monthlyPayment();
+
+    //Abstract Method to show the specific attributes of each type of property
+    public abstract void showSpecificAttributes();
+
 
     public double totalPayment() {
         return monthlyPayment() * this.financingTerm * 12;
