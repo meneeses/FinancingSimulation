@@ -5,7 +5,7 @@ FEITO POR: João Meneses
 DISCIPLINA: Fundamentos da Programação Orientada a Objetos
 DESCRIÇÃO: Sistema de Simulação de Financiamentos Imobiliários
 Turma: 22
-ÚLTIMA ATUALIZAÇÃO: 11/06/24
+ÚLTIMA ATUALIZAÇÃO: 18/06/24
 
 OBS: Decidi fazer em inglês para treinar a escrita e leitura da língua.
 
@@ -27,45 +27,59 @@ import java.util.ArrayList;
 public class Main {
     public static void main(String[] args) {
         UserInterface.welcomeMessage();
-        ArrayList<Financing> financingList = new ArrayList<>();
+        String continueSimulation = "yes";
 
-        double totalPropertyValue = 0;
-        double totalFinancingValue = 0;
 
-        // Requesting the property value, annual interest rate and financing term from the user for one financing
-        double propertyValue = UserInterface.requestPropertyValue();
-        double annualInterestRate = UserInterface.requestAnnualInterestRate();
-        int financingTerm = UserInterface.requestFinancingTerm();
+            ArrayList<Financing> financingList = new ArrayList<>();
+            double totalPropertyValue = 0;
+            double totalFinancingValue = 0;
+            int choice;
 
-        // Creating a new financing object and adding it to the list
-        Financing financing = new Financing(propertyValue, annualInterestRate, financingTerm);
-        financingList.add(financing);
+            do {
+                choice = UserInterface.requestPropertyType();
 
-        // Adding the property value and the total payment to the totals
-        totalPropertyValue += propertyValue;
-        totalFinancingValue += financing.totalPayment();
+                if (choice >= 1 && choice <= 3) {
 
-        // Creating and adding the other financings with data provided directly in the code
-        financingList.add(new House(200000, 10, 15));
-        financingList.add(new House(300000, 4, 20));
-        financingList.add(new Apartment(150000, 6, 25));
-        financingList.add(new Apartment(250000, 9, 30));
-        financingList.add(new Land(100000, 5, 10));
+                    // Requesting the property value, annual interest rate and financing term from the user for one financing
+                    double propertyValue = UserInterface.requestPropertyValue();
+                    double annualInterestRate = UserInterface.requestAnnualInterestRate();
+                    int financingTerm = UserInterface.requestFinancingTerm();
 
-        // Adding the property values and the total payments of the other financing to the totals
-        for (int i = 1; i < financingList.size(); i++) {
-            totalPropertyValue += financingList.get(i).getPropertyValue();
-            totalFinancingValue += financingList.get(i).totalPayment();
-        }
+                    // Creating a new financing object based on the user's choice
+                    if (choice == 1) {
+                        String builtUpArea = UserInterface.requestBuiltUpArea();
+                        String landLength = UserInterface.requestLandLength();
+                        financingList.add(new House(propertyValue, annualInterestRate, financingTerm, builtUpArea, landLength));
 
-        // Displaying the financing data for each financing
-        for (Financing fin : financingList) {
-            System.out.println("\n\nType: " + fin.getType());
-            fin.showAllFinancingData();
-        }
+                    } else if (choice == 2) {
+                        int parkingSpaces = UserInterface.requestParkingSpaces();
+                        int floorNumber = UserInterface.requestFloorNumber();
+                        financingList.add(new Apartment(propertyValue, annualInterestRate, financingTerm, parkingSpaces, floorNumber));
 
-        System.out.println("\nTotal of all properties: R$ " + String.format("%.2f", totalPropertyValue));
-        System.out.println("Total of all financing: R$ " + String.format("%.2f", totalFinancingValue));
+                    } else if (choice == 3) {
+                        String zoneType = UserInterface.requestZoneType();
+                        financingList.add(new Land(propertyValue, annualInterestRate, financingTerm, zoneType));
+                    }
+
+                    // Adding the property value and the total payment to the totals
+                    totalPropertyValue += propertyValue;
+                    totalFinancingValue += financingList.get(financingList.size() - 1).totalPayment();
+
+                    // Displaying the financing data for the current financing
+                    Financing fin = financingList.get(financingList.size() - 1);
+                    System.out.println("\n\nType: " + fin.getType());
+                    fin.showSpecificAttributes();
+                    fin.showAllFinancingData();
+
+                    continueSimulation = UserInterface.requestContinueSimulation();
+                    if (continueSimulation.equalsIgnoreCase("no")) {
+                        break;
+                    }
+                }
+            } while (choice != 4);
+
+        System.out.println("\nTotal of all properties simulated: R$ " + String.format("%.2f", totalPropertyValue));
+        System.out.println("Total of all financing simulated: R$ " + String.format("%.2f", totalFinancingValue));
 
         UserInterface.goodbyeMessage();
     }

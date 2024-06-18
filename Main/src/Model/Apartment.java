@@ -3,10 +3,26 @@ package Model;
 // ==== Class to calculate the financing of an Apartment ==== //
 public class Apartment extends Financing{
 
-    public Apartment(double propertyValue, double annualInterestRate, int financingTerm) {
+    //Attributes
+    private final int parkingSpaces;
+    private final int floorNumber;
+
+    //Constructor
+    public Apartment(double propertyValue, double annualInterestRate, int financingTerm, int parkingSpaces, int floorNumber) {
         super(propertyValue, annualInterestRate, financingTerm);
+        this.parkingSpaces = parkingSpaces;
+        this.floorNumber = floorNumber;
     }
 
+    // Getters
+    public int getParkingSpaces() {
+        return parkingSpaces;
+    }
+    public int getFloorNumber() {
+        return floorNumber;
+    }
+
+    //Methods
     @Override
     public double monthlyPayment() {
         double propertyValue = this.getPropertyValue();
@@ -18,6 +34,12 @@ public class Apartment extends Financing{
         double denominator = Math.pow(1 + monthlyRate, months) - 1;
 
         return numerator / denominator;
+    }
+
+    @Override
+    public void showSpecificAttributes() {
+        System.out.println("Parking Spaces: " + this.getParkingSpaces());
+        System.out.println("Floor Number: " + this.getFloorNumber() + "°");
     }
 
     @Override
