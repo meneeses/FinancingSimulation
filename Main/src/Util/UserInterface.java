@@ -18,7 +18,24 @@ public class UserInterface {
         System.out.println("\nThank you for using the Real Estate Financing System!");
     }
 
-    public static double requestPropertyValue() {
+    public static int requestPropertyType() {
+        Scanner scanner = new Scanner(System.in);
+        int choice = 0;
+        boolean validInput = false;
+        while (!validInput) {
+            try {
+                System.out.println("\nWould you like to simulate:\n1. House\n2. Apartment\n3. Land\n4. Exit\n");
+                choice = scanner.nextInt();
+                validInput = true;
+            } catch (InputMismatchException e) {
+                System.out.println("Invalid input. Please enter a number between 1 and 4.");
+                scanner.next(); // discard the invalid input
+            }
+        }
+        return choice;
+    }
+
+        public static double requestPropertyValue() {
         double propertyValue;
         do {
             System.out.println("\nEnter the property value: ");
@@ -71,5 +88,71 @@ public class UserInterface {
             }
         } while (true);
     }
+
+    public static String requestBuiltUpArea() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("\nEnter the built-up area: ");
+        return scanner.next();
+    }
+    public static String requestLandLength() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("\nEnter the land length: ");
+        return scanner.next();
+    }
+
+    public static int requestParkingSpaces() {
+        int parkingSpaces;
+        do {
+            System.out.println("\nEnter the number of parking spaces: ");
+            try {
+                parkingSpaces = scan.nextInt();
+                if (parkingSpaces <= 0) {
+                    System.out.println("\nThe number of parking spaces must be greater than zero. Please enter a valid value.");
+                } else {
+                    return parkingSpaces;
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("\nInvalid value. Please enter a valid value.");
+                scan.next();
+            }
+        } while (true);
+    }
+
+    public static int requestFloorNumber() {
+        int floorNumber;
+        do {
+            System.out.println("\nEnter the floor number: ");
+            try {
+                floorNumber = scan.nextInt();
+                if (floorNumber <= 0) {
+                    System.out.println("\nThe floor number must be greater than zero. Please enter a valid value.");
+                } else {
+                    return floorNumber;
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("\nInvalid value. Please enter a valid value.");
+                scan.next();
+            }
+        } while (true);
+    }
+
+    public static String requestZoneType() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("\nEnter the zone type: (e.g. residential, commercial)");
+        return scanner.next();
+    }
+
+    public static String requestContinueSimulation() {
+        Scanner scanner = new Scanner(System.in);
+        try {
+            System.out.println("\nWould you like to perform another simulation? (yes/no)");
+            return scanner.next();
+        } catch (InputMismatchException e) {
+            System.out.println("Invalid input. Please enter 'yes' or 'no'.");
+            scanner.next(); // discard the invalid input
+        }
+        return scanner.next();
+    }
 }
+
 
