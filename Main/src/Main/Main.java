@@ -27,14 +27,15 @@ import java.util.ArrayList;
 public class Main {
     public static void main(String[] args) {
         UserInterface.welcomeMessage();
-        String continueSimulation = "yes";
 
-
+            // Creating an ArrayList to store all the financing objects
             ArrayList<Financing> financingList = new ArrayList<>();
+
             double totalPropertyValue = 0;
             double totalFinancingValue = 0;
             int choice;
 
+            // Loop to simulate multiple financings
             do {
                 choice = UserInterface.requestPropertyType();
 
@@ -50,13 +51,15 @@ public class Main {
                         String builtUpArea = UserInterface.requestBuiltUpArea();
                         String landLength = UserInterface.requestLandLength();
                         financingList.add(new House(propertyValue, annualInterestRate, financingTerm, builtUpArea, landLength));
+                    }
 
-                    } else if (choice == 2) {
+                    if (choice == 2) {
                         int parkingSpaces = UserInterface.requestParkingSpaces();
                         int floorNumber = UserInterface.requestFloorNumber();
                         financingList.add(new Apartment(propertyValue, annualInterestRate, financingTerm, parkingSpaces, floorNumber));
+                    }
 
-                    } else if (choice == 3) {
+                    if (choice == 3) {
                         String zoneType = UserInterface.requestZoneType();
                         financingList.add(new Land(propertyValue, annualInterestRate, financingTerm, zoneType));
                     }
@@ -71,13 +74,15 @@ public class Main {
                     fin.showSpecificAttributes();
                     fin.showAllFinancingData();
 
-                    continueSimulation = UserInterface.requestContinueSimulation();
+                    // Asking the user if they want to continue simulating
+                    String continueSimulation = UserInterface.requestContinueSimulation();
                     if (continueSimulation.equalsIgnoreCase("no")) {
                         break;
                     }
                 }
             } while (choice != 4);
 
+            // Displaying the total values of all the simulated financings
         System.out.println("\nTotal of all properties simulated: R$ " + String.format("%.2f", totalPropertyValue));
         System.out.println("Total of all financing simulated: R$ " + String.format("%.2f", totalFinancingValue));
 

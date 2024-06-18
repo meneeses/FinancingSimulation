@@ -24,6 +24,7 @@ public class Apartment extends Financing{
 
     //Methods
     @Override
+    // Calculate the monthly payment for an apartment financing
     public double monthlyPayment() {
         double propertyValue = this.getPropertyValue();
         double annualInterestRate = this.getAnnualInterestRate() / 100; // Convert the annual interest rate from percentage to decimal

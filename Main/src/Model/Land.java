@@ -19,6 +19,7 @@ public class Land extends Financing{
 
     //Methods
     @Override
+    // Calculate the monthly payment for a land financing with a 2% increase
     public double monthlyPayment() {
         return (this.getPropertyValue() / (this.getFinancingTerm() * 12)) * (1 + (this.getAnnualInterestRate() / 12)) * 1.02; //Adding a 2% increase
     }

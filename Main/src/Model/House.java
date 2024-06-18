@@ -4,20 +4,15 @@ package Model;
 public class House extends Financing{
 
     //Attributes
-    private final int mandatoryInsurance = 80;
     private final String builtUpArea;
     private final String landLength;
+    protected final int mandatoryInsurance = 80;
 
     //Constructor
     public House(double propertyValue, double annualInterestRate, int financingTerm, String builtUpArea, String landLength) {
         super(propertyValue, annualInterestRate, financingTerm);
         this.builtUpArea = builtUpArea;
         this.landLength = landLength;
-    }
-
-    // Getters
-    public int getMandatoryInsurance() {
-        return mandatoryInsurance;
     }
 
     public String getBuiltUpArea() {
@@ -30,8 +25,9 @@ public class House extends Financing{
 
     //Methods
     @Override
+    // Calculate the monthly payment for a house financing with a mandatory insurance of R$ 80
     public double monthlyPayment() {
-        return (this.getPropertyValue() / (this.getFinancingTerm() * 12)) * (1 + (this.getAnnualInterestRate() / 12)) + this.mandatoryInsurance;
+        return (this.getPropertyValue() / (this.getFinancingTerm() * 12)) * (1 + (this.getAnnualInterestRate() / 12)) + mandatoryInsurance;
     }
 
     @Override

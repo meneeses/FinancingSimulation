@@ -19,17 +19,16 @@ public class UserInterface {
     }
 
     public static int requestPropertyType() {
-        Scanner scanner = new Scanner(System.in);
         int choice = 0;
         boolean validInput = false;
         while (!validInput) {
             try {
                 System.out.println("\nWould you like to simulate:\n1. House\n2. Apartment\n3. Land\n4. Exit\n");
-                choice = scanner.nextInt();
+                choice = scan.nextInt();
                 validInput = true;
             } catch (InputMismatchException e) {
                 System.out.println("Invalid input. Please enter a number between 1 and 4.");
-                scanner.next(); // discard the invalid input
+                scan.next(); // discard the invalid input
             }
         }
         return choice;
@@ -89,17 +88,20 @@ public class UserInterface {
         } while (true);
     }
 
+    // Ask the user for the built-up area of the house
     public static String requestBuiltUpArea() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("\nEnter the built-up area: ");
         return scanner.next();
     }
+    // Ask the user for the land length
     public static String requestLandLength() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("\nEnter the land length: ");
         return scanner.next();
     }
 
+    // Ask the user for the number of parking spaces
     public static int requestParkingSpaces() {
         int parkingSpaces;
         do {
@@ -117,7 +119,7 @@ public class UserInterface {
             }
         } while (true);
     }
-
+    // Ask the user for the floor number
     public static int requestFloorNumber() {
         int floorNumber;
         do {
@@ -136,12 +138,14 @@ public class UserInterface {
         } while (true);
     }
 
+    // Ask the user for the zone type
     public static String requestZoneType() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("\nEnter the zone type: (e.g. residential, commercial)");
         return scanner.next();
     }
 
+    // Ask the user if they want to perform another simulation
     public static String requestContinueSimulation() {
         Scanner scanner = new Scanner(System.in);
         try {
