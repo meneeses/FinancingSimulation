@@ -76,8 +76,8 @@ public class UserInterface {
             System.out.println("\nEnter the annual interest rate: ");
             try {
                 annualInterestRate = scan.nextDouble();
-                if (annualInterestRate <= 0 || annualInterestRate >= 30) {
-                    System.out.println("\nThe annual interest rate must be greater than zero and less than or equal to 30%. Please enter a valid value.");
+                if (annualInterestRate <= 0) {
+                    System.out.println("\nThe annual interest rate must be greater than zero. Please enter a valid value.");
                 } else {
                     return annualInterestRate;
                 }
@@ -90,15 +90,13 @@ public class UserInterface {
 
     // Ask the user for the built-up area of the house
     public static String requestBuiltUpArea() {
-        Scanner scanner = new Scanner(System.in);
         System.out.println("\nEnter the built-up area: ");
-        return scanner.next();
+        return scan.next();
     }
     // Ask the user for the land length
     public static String requestLandLength() {
-        Scanner scanner = new Scanner(System.in);
         System.out.println("\nEnter the land length: ");
-        return scanner.next();
+        return scan.next();
     }
 
     // Ask the user for the number of parking spaces
@@ -140,22 +138,20 @@ public class UserInterface {
 
     // Ask the user for the zone type
     public static String requestZoneType() {
-        Scanner scanner = new Scanner(System.in);
         System.out.println("\nEnter the zone type: (e.g. residential, commercial)");
-        return scanner.next();
+        return scan.next();
     }
 
     // Ask the user if they want to perform another simulation
     public static String requestContinueSimulation() {
-        Scanner scanner = new Scanner(System.in);
         try {
             System.out.println("\nWould you like to perform another simulation? (yes/no)");
-            return scanner.next();
+            return scan.next();
         } catch (InputMismatchException e) {
             System.out.println("Invalid input. Please enter 'yes' or 'no'.");
-            scanner.next(); // discard the invalid input
+            scan.next(); // discard the invalid input
         }
-        return scanner.next();
+        return scan.next();
     }
 }
 

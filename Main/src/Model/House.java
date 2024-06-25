@@ -1,12 +1,14 @@
 package Model;
 
+import Util.SurchargeGreaterThanInterestException;
+
 // ==== Class to calculate the financing of a House ==== //
 public class House extends Financing{
 
     //Attributes
     private final String builtUpArea;
     private final String landLength;
-    protected final int mandatoryInsurance = 80;
+    protected double mandatoryInsurance = 80;
 
     //Constructor
     public House(double propertyValue, double annualInterestRate, int financingTerm, String builtUpArea, String landLength) {
@@ -24,9 +26,24 @@ public class House extends Financing{
     }
 
     //Methods
+
+    // Check if the mandatory insurance exceeds the annual interest rate
+    private void checkSurchargeExceedsInterest(double annualInterestRate, double mandatoryInsurance) throws SurchargeGreaterThanInterestException {
+        throw new SurchargeGreaterThanInterestException("\nThe mandatory insurance exceeds the annual interest rate. The mandatory insurance was set to the annual interest rate.");
+    }
+
+
     @Override
     // Calculate the monthly payment for a house financing with a mandatory insurance of R$ 80
     public double monthlyPayment() {
+        try {
+            if (mandatoryInsurance > (this.getAnnualInterestRate())) {
+                checkSurchargeExceedsInterest(this.getAnnualInterestRate(), mandatoryInsurance);
+            }
+        } catch (SurchargeGreaterThanInterestException e) {
+            System.out.println(e.getMessage());
+            mandatoryInsurance = this.getAnnualInterestRate();
+        }
         return (this.getPropertyValue() / (this.getFinancingTerm() * 12)) * (1 + (this.getAnnualInterestRate() / 12)) + mandatoryInsurance;
     }
 

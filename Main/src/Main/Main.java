@@ -5,7 +5,7 @@ FEITO POR: João Meneses
 DISCIPLINA: Fundamentos da Programação Orientada a Objetos
 DESCRIÇÃO: Sistema de Simulação de Financiamentos Imobiliários
 Turma: 22
-ÚLTIMA ATUALIZAÇÃO: 18/06/24
+ÚLTIMA ATUALIZAÇÃO: 25/06/24
 
 OBS: Decidi fazer em inglês para treinar a escrita e leitura da língua.
 
@@ -70,7 +70,7 @@ public class Main {
 
                     // Displaying the financing data for the current financing
                     Financing fin = financingList.get(financingList.size() - 1);
-                    System.out.println("\n\nType: " + fin.getType());
+                    System.out.println("\nType: " + fin.getType());
                     fin.showSpecificAttributes();
                     fin.showAllFinancingData();
 
