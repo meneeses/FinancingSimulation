@@ -1,7 +1,9 @@
 package Model;
 
+import java.io.Serializable;
+
 // ==== Class to calculate the financing of a property ==== //
-public abstract class Financing {
+public abstract class Financing implements Serializable {
 
     //Attributes
     private final double propertyValue;
