@@ -2,6 +2,8 @@ package Model;
 
 import Util.SurchargeGreaterThanInterestException;
 
+import java.util.Objects;
+
 // ==== Class to calculate the financing of a House ==== //
 public class House extends Financing{
 
@@ -57,4 +59,18 @@ public class House extends Financing{
     public String getType() {
         return "House";
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (!super.equals(o)) return false;
+        if (!(o instanceof House house)) return false;
+        return Objects.equals(builtUpArea, house.builtUpArea) &&
+                Objects.equals(landLength, house.landLength);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), builtUpArea, landLength);
+    }
+
 }

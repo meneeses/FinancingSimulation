@@ -1,5 +1,7 @@
 package Model;
 
+import java.util.Objects;
+
 // ==== Class to calculate the financing of an Apartment ==== //
 public class Apartment extends Financing{
 
@@ -47,4 +49,18 @@ public class Apartment extends Financing{
     public String getType() {
         return "Apartment";
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (!super.equals(o)) return false;
+        if (!(o instanceof Apartment apartment)) return false;
+        return Objects.equals(parkingSpaces, apartment.parkingSpaces) &&
+                Objects.equals(floorNumber, apartment.floorNumber);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), parkingSpaces, floorNumber);
+    }
+
 }

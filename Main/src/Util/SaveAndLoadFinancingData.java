@@ -17,7 +17,7 @@ public class SaveAndLoadFinancingData {
 
     // Verify if the file exists
     public static boolean verifyFile() {
-        File file = new File("src/Data/financingData.ser");
+        File file = new File("financingData.ser");
         return file.exists();
     }
 

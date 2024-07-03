@@ -31,13 +31,15 @@ import static Util.SaveAndLoadFinancingData.loadAndDisplayFinancingData;
 public class Main {
     public static void main(String[] args) {
 
-
         UserInterface.welcomeMessage();
 
+        // Load and display previous financing data
         loadAndDisplayFinancingData();
 
+        // Creating a list to store the financing objects
         ArrayList<Financing> financingList = new ArrayList<>();
 
+        // Variables to store the total property value and total financing value
         double totalPropertyValue = 0;
         double totalFinancingValue = 0;
         int choice;

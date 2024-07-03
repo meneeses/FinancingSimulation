@@ -25,6 +25,18 @@ public class Land extends Financing{
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (!super.equals(o)) return false;
+        if (!(o instanceof Land land)) return false;
+        return zoneType.equals(land.zoneType);
+    }
+
+    @Override
+    public int hashCode() {
+        return zoneType.hashCode();
+    }
+
+    @Override
     public void showSpecificAttributes() {
         System.out.println("Zone Type: " + this.getZoneType());
     }

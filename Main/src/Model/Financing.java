@@ -1,6 +1,7 @@
 package Model;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 // ==== Class to calculate the financing of a property ==== //
 public abstract class Financing implements Serializable {
@@ -41,6 +42,22 @@ public abstract class Financing implements Serializable {
 
     //Abstract Method to get the type of the property
     public abstract String getType();
+
+
+    // Method to compare two financing objects
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Financing)) return false;
+        Financing that = (Financing) o;
+        return Double.compare(that.propertyValue, propertyValue) == 0 &&
+                Double.compare(that.annualInterestRate, annualInterestRate) == 0 &&
+                financingTerm == that.financingTerm;
+    }
+
+    // Method to calculate the hash code of a financing object
+    public int hashCode() {
+        return Objects.hash(propertyValue, annualInterestRate, financingTerm);
+    }
 
     //Method to calculate the total payment
     public double totalPayment() {
